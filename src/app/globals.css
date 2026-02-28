@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   BRAND DESIGN SYSTEM — Color Palette & Typography
+   Cherry Blossom Night — Awwwards-Level Creative Agency
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* Brand Palette */
+  --color-mauve: #765D67;
+  --color-plum: #6D3C52;
+  --color-burgundy: #4B2138;
+  --color-void: #1B0C1A;
+  --color-shadow: #2D222F;
+  --color-blush: #FADCD5;
+
+  /* Semantic Aliases */
+  --background: #1B0C1A;
+  --foreground: #FADCD5;
+  --muted: #765D67;
+  --accent: #6D3C52;
+  --card-bg: #2D222F;
+
+  /* Glassmorphism tokens */
+  --glass-bg: rgba(45, 34, 47, 0.4);
+  --glass-border: rgba(250, 220, 213, 0.08);
+  --glass-highlight: rgba(250, 220, 213, 0.05);
+  --glass-strong-bg: rgba(45, 34, 47, 0.7);
+  --glass-strong-border: rgba(250, 220, 213, 0.12);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+
+  --color-mauve: #765D67;
+  --color-plum: #6D3C52;
+  --color-burgundy: #4B2138;
+  --color-void: #1B0C1A;
+  --color-shadow: #2D222F;
+  --color-blush: #FADCD5;
+
+  /* Font Family Tokens */
+  --font-display: var(--font-orbitron);
+  --font-heading: var(--font-audiowide);
+  --font-sub: var(--font-rajdhani);
+  --font-accent: var(--font-oxanium);
+  --font-body: var(--font-space-grotesk);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════════════════════════ */
+
+/* Normal cursor visible - trailing tail effect follows behind */
+
+html {
+  scroll-behavior: auto;
+  background: var(--color-void);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SELECTION & SCROLLBAR
+   ═══════════════════════════════════════════════════════════ */
+
+::selection {
+  background: var(--color-plum);
+  color: var(--color-blush);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-mauve);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-plum);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════ */
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-blush) 0%, var(--color-plum) 50%, var(--color-mauve) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-accent {
+  background: linear-gradient(135deg, var(--color-plum) 0%, var(--color-blush) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-strong {
+  background: var(--glass-strong-bg);
+  backdrop-filter: blur(40px) saturate(1.4);
+  -webkit-backdrop-filter: blur(40px) saturate(1.4);
+  border: 1px solid var(--glass-strong-border);
+}
+
+.noise {
+  position: relative;
+}
+
+.noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glow-blush {
+  box-shadow: 0 0 40px rgba(250, 220, 213, 0.15), 0 0 80px rgba(250, 220, 213, 0.05);
+}
+
+.glow-plum {
+  box-shadow: 0 0 40px rgba(109, 60, 82, 0.35), 0 0 80px rgba(109, 60, 82, 0.1);
+}
+
+.border-gradient {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  background-origin: border-box;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FLUID TYPOGRAPHY
+   ═══════════════════════════════════════════════════════════ */
+
+.fluid-display {
+  font-size: clamp(3rem, 10vw + 1rem, 13rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+.fluid-heading {
+  font-size: clamp(2rem, 5vw + 0.5rem, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.fluid-sub {
+  font-size: clamp(1.25rem, 2.5vw + 0.5rem, 3rem);
+  line-height: 1.15;
+}
+
+.fluid-body {
+  font-size: clamp(0.875rem, 1vw + 0.25rem, 1.125rem);
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
